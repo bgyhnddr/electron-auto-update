@@ -10,13 +10,14 @@ namespace kitchen_client_update
 {
     class Program
     {
-        private static void 更新(string title, string url)
+        private static void 更新(string title, string url, string version)
         {
             AutoUpdater.CheckForUpdateEvent += (UpdateInfoEventArgs args) =>
             {
                 MessageBoxResult dialogResult;
                 if (args.Error == null)
                 {
+                    args.InstalledVersion = new Version(version);
                     if (args.InstalledVersion >= new Version(args.CurrentVersion))
                     {
                         return;
@@ -59,9 +60,9 @@ namespace kitchen_client_update
         }
         static void Main(string[] args)
         {
-            if (args.Length >= 2)
+            if (args.Length >= 3)
             {
-                更新(args[0], args[1]);
+                更新(args[0], args[1], args[3]);
             }
         }
     }
