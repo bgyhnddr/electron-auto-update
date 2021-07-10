@@ -62,7 +62,7 @@ namespace kitchen_client_update
         {
             if (args.Length >= 3)
             {
-                更新(args[0], args[1], args[3]);
+                更新(args[0], args[1], args[2]);
             }
         }
     }
